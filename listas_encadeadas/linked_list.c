@@ -3,47 +3,37 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct Node {
-    Element element;
-    struct Node* next;
-};
+typedef Node{
 
-struct LinkedList {
-    Node* head;
-    int size;
-}
-
-//primeira coisa que fzemos é criar a lista
+} 
 
 LinkedList* list_create(){
-    //alocar memória para a lista
-    LinkedList* list = malloc(sizeof(LinkedList));
+  LinkedList* list = malloc(sizeof(LinkedList));
 
-    list->head = NULL; //quando eu aponto pra nulo, obrigo ele a ser o 1° nó da lista
-    list->size = 0;
+  list->head = NULL;
+  list->size = 0;
 
-    return list;
+  return list;
 }
 
 void list_destroy(LinkedList* list){
     Node* cur = list->head;
 
-    while (cur != NULL){
+    while(cur != NULL){
         Node* trash = cur;
 
         cur = cur->next;
         free(trash);
     }
     free(list);
-}
+}   
 
 void list_insertFirst(LinkedList* list, Element element){
-    //aloco memória para meu novo nó
     Node* newNode = malloc(sizeof(Node));
 
     newNode->element = element;
     newNode->next = list->head;
-    list->head = newNode; // imagina o desenho de um ciclo/circulo
+    list->head = newNode;
     list->size++;
 }
 
@@ -51,19 +41,72 @@ void list_insertAfter(LinkedList* list, int pos, Element element){
     if(list->head == NULL || pos < 0){
         list_insertFirst(list, element);
     } else {
-        Node* cur = list->head; //faço um ponteiro para percorrer todos os nós do meu array
+        Node* cur = cur->head;
         int i = 0;
-    //laço para percorrer o array
-    while(i < pos && cur->next != NULL) {
+
+        while(i < pos && cur->next != NULL){
+             cur = cur->next;
+             i++;
+            }
+        Node* newNode = malloc(sizeof)
+        }
+     }
+    
+    
+
+
+void list_print(LinkedList* list){
+    Node* cur = list->head;
+
+    while(cur != NULL) {
+        element_print(cur->element);
         cur = cur->next;
-        i++;
+        if(cur != NULL){
+            printf(" -> ");
+        }
     }
-        Node* newNode = malloc(sizeof(Node));
-
-        newNode->element = element; //atribuo o valor digitado pelo usuário no meu elemento da lista
-        newNode->next = cur->next; //meu newNode precisa apontar para onde anteriormente o cur->next apontava
-        cur->next = newNode; //current->next passa agora a apontar para o NewNode que acabou de entrar na minha lista
-        list->size++;
-    }
-
+    printf("\n");
 }
+
+
+bool list_removeFirst(LinkedList* list, list){
+    if(list->head == NULL) {
+        return false;
+    }
+    Node* trash = list->head;
+
+    list->head = list->head->next;
+    free(trash);
+    list->size--;
+
+    return true;
+}
+
+bool list_removeAt(LinkedList* list, int pos){
+    //caso 0: posicao inválida
+    if(pos < 0 || pos >= list->size) {
+        return false;
+    }
+    //caso 1: lista vazia
+    if(list == NULL) {
+        return false;
+    } //caso 2: remoção na cabeça
+    if(pos == 0) {
+        return list_removeFirst(list);
+    } else {
+      //caso 3: remocao na cauda
+      Node* prev = list->head;
+      int i = 0;
+
+      while(i < pos - 1) {
+        prev = prev->next;
+        i++;
+      }
+      Node* trash = prev->next;
+      
+      prev->next = prev->next->next;
+      free(trash);
+      list->dize--;
+    }
+    return true;
+}   

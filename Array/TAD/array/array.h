@@ -11,3 +11,5 @@ void array_print(Array* array);
 void array_set(Array* array, int index, Element value);
 int array_get(Array* array, int index);
 int array_size(Array* array);
+
+#endif
