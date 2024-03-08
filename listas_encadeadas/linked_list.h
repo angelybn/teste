@@ -11,8 +11,15 @@ LinkedList* list_create();
 void list_destroy(LinkedList* list);
 void list_insertFirst(LinkedList* list, Element element);
 void list_insertAfter(LinkedList* list, int pos, Element element);
-bool list_removeFirst(LinkedList* list, list);
+bool list_removeFirst(LinkedList* list);
 bool list_removeAt(LinkedList* list, int pos);
 void list_print(LinkedList* list);
+int list_isSorted(LinkedList* list);
+void list_printElements(LinkedList* l1, LinkedList* l2);
+bool list_equals(LinkedList* l1, LinkedList* l2);
+int list_get(LinkedList* list, int position);
+void list_removeDuplicates(LinkedList* list);
+void list_printReverse(LinkedList* l);
+LinkedList*reverse(LinkedList* list);
 
 #endif
