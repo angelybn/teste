@@ -143,23 +143,31 @@ int list_get(LinkedList* list, int position) {
 
     return cur->element;
 }
-
+////1
 void list_printElements(LinkedList* l1, LinkedList* l2) {
+    if (l1 == NULL || l2 == NULL) {
+        printf("Invalid input lists.\n");
+        return;
+    }
+
     Node* cur2 = l2->head;
 
     while (cur2 != NULL) {
         int pos = cur2->element;
-        Element element = list_get(l1, pos);
-        element_print(element);
-        
-        cur2 = cur2->next;
-        if (cur2 != NULL) {
-            printf(" ");
+
+        // Verifica se a posição é válida na primeira lista
+        if (pos >= 0 && pos < list_size(l1)) {
+            Element element = list_get(l1, pos);
+            element_print(element); 
+        } else {
+            printf("Invalid position: %d\n", pos);
         }
+        cur2 = cur2->next;
     }
 
     printf("\n");
 }
+///////2
 bool list_equals(LinkedList* l1, LinkedList* l2) {
     if (l1->size != l2->size) {
         return false; // Se os tamanhos das listas forem diferentes, elas não são iguais
@@ -180,8 +188,7 @@ bool list_equals(LinkedList* l1, LinkedList* l2) {
         return true;
     }
 }
-
-
+/////3
 int list_isSorted(LinkedList* list) {
 
     Node* cur = list->head;
@@ -210,7 +217,7 @@ int list_isSorted(LinkedList* list) {
         return 0; // A lista não está ordenada
 }
 
-
+/////4
 void list_removeDuplicates(LinkedList* list) {
 
     Node* cur1 = list->head;
@@ -233,47 +240,7 @@ void list_removeDuplicates(LinkedList* list) {
         cur1 = cur1->next;
     }
 }
-
-void list_printReverse(LinkedList* l){
-    Node* current = l->head;
-    Node* prev = NULL;
-    Node* next = NULL;
-
-    while (current != NULL) {
-     
-        next = current->next; // 2 
-        current->next = prev; //NULL
-        prev = current; // 
-        current = next;
-    }
-
-    current = prev; // O último nó se torna a nova cabeça
-
-    // Agora, current aponta para o último nó, vamos imprimir os elementos
-    while (current != NULL) {
-        element_print(current->element);
-        if (current->next != NULL) {
-            printf(" -> ");
-        }
-        current = current->next;
-    }
-
-    // Restaurar a lista para sua forma original
-    current = prev;
-    prev = NULL;
-
-    while (current != NULL) {
-        next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
-    }
-
-    l->head = prev; // Restaurando a cabeça da lista
-}
-
-
-
+/////5
 int list_search(LinkedList *list, Element value){
     Node* cur = list->head;
     int pos = 0;

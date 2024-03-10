@@ -69,7 +69,7 @@ void stack_print(Stack* stack){
     }
     printf("\n");
 }
-
+////8
 Stack* copy(Stack* stack){
     Stack* new_stack = stack_create(stack->capacity);
 
@@ -78,3 +78,4 @@ Stack* copy(Stack* stack){
     }
     return new_stack;
 }
+
