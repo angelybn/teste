@@ -21,5 +21,6 @@ int list_get(LinkedList* list, int position);
 void list_removeDuplicates(LinkedList* list);
 void list_printReverse(LinkedList* l);
 LinkedList*reverse(LinkedList* list);
+int list_search(LinkedList *list, Element value);
 
 #endif

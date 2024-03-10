@@ -3,24 +3,25 @@
 #include "linked_list.h"
 
 int main() {
-    // Criar e inicializar duas listas
-    LinkedList* list1 = list_create();
+    // Criando e inicializando a lista
+    LinkedList* my_list = list_create();
+    
+    // Inserindo alguns elementos na lista
+    list_insertFirst(my_list, 10);
+    list_insertFirst(my_list, 20);
+    list_insertFirst(my_list, 30);
+    list_insertFirst(my_list, 40);
 
+    // Chame a função list_search para encontrar um elemento na lista
+    int index = list_search(my_list, 20);
+    if (index != -1) {
+        printf("Element 20 found at index: %d\n", index);
+    } else {
+        printf("Element 20 not found in the list\n");
+    }
 
-    // Inserir alguns elementos nas duas listas
-    list_insertFirst(list1, 100);
-    list_insertFirst(list1, 90);
-    list_insertFirst(list1, 80);
-    list_insertFirst(list1, 70);
-    list_insertFirst(list1, 60);
-     list_print(list1);
-     printf("\n");
-    reverse(list1);
-    list_print(list1);
-
-    // Liberar memória alocada
-    list_destroy(list1);
-   
+    // Destrua a lista após o uso para evitar vazamentos de memória
+    list_destroy(my_list);
 
     return 0;
 }

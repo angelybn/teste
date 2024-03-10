@@ -274,3 +274,17 @@ void list_printReverse(LinkedList* l){
 
 
 
+int list_search(LinkedList *list, Element value){
+    Node* cur = list->head;
+    int pos = 0;
+
+    while(cur != NULL){
+        if (cur->element == value) {
+            return pos;
+        }
+        cur = cur->next;
+        pos++;
+    }
+    return -1;
+}
+

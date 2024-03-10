@@ -1,7 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 
-#inlude <stdbool.h>
+#include <stdbool.h>
 
 #include "element.h"
 
@@ -16,5 +16,6 @@ bool stack_isEmpty(Stack* stack);
 bool stack_is_full(Stack* stack);
 int stack_size(Stack* stack);
 void stack_print(Stack* stack);
+Stack* copy(Stack* s);
 
 #endif

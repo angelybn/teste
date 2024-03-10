@@ -8,13 +8,14 @@
 typedef struct Stack Stack;
 
 Stack* stack_create(int capacity);
-void stack destroy(Stack* stack);
+void stack_destroy(Stack* stack);
 bool stack_push(Stack* stack, Element value);
 Element stack_pop(Stack* stack);
 Element stack_peek(Stack* stack);
-book stack_isEmpty(Stack* stack);
+bool stack_isEmpty(Stack* stack);
 bool stack_is_full(Stack* stack);
 int stack_size(Stack* stack);
 void stack_print(Stack* stack);
+Stack* copy(Stack* stack);
 
 #endif

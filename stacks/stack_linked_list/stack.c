@@ -1,5 +1,5 @@
 #include "stack.h"
-
+#include "element.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -25,7 +25,8 @@ void stack_destroy(Stack* stack) {
     Node* cur = stack->top;
 
     while(cur != NULL){
-        cur-> cur->next;
+        Node* trash = cur;
+        cur = cur->next;
         free(trash);
     }
     free(stack);
@@ -48,7 +49,7 @@ Element stack_pop(Stack* stack){
     }
 
     Node* trash = stack->top;
-    Element value = trash->value;
+    Element value = trash->element;
 
     stack->top = trash->next;
     free(trash);
@@ -62,6 +63,9 @@ Element stack_peek(Stack* stack) {
         return ELEMENT_NULL;
     }
     return stack->top->element;
+}
+bool stack_isEmpty(Stack* stack) {
+    return stack->top == NULL;
 }
 
 bool stack_is_full(Stack* stack){
@@ -82,3 +86,4 @@ void stack_print(Stack* stack){
     }
     printf("\n");
 }
+

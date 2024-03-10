@@ -20,7 +20,7 @@ Stack* stack_create(int capacity){
     return stack;
 }
 
-void stack destroy(Stack* stack){
+void stack_destroy(Stack* stack){
     free(stack->elements);
     free(stack);
 }
@@ -50,7 +50,7 @@ Element stack_peek(Stack* stack){
     return stack->elements[stack->top];
 }
 
-book stack_isEmpty(Stack* stack){
+bool stack_isEmpty(Stack* stack){
     return stack->top == -1;
 }
 
@@ -68,4 +68,13 @@ void stack_print(Stack* stack){
         printf(" ");
     }
     printf("\n");
+}
+
+Stack* copy(Stack* stack){
+    Stack* new_stack = stack_create(stack->capacity);
+
+     for (int i = 0; i <= stack->top; i++){
+        stack_push(new_stack, stack->elements[i]);
+    }
+    return new_stack;
 }
